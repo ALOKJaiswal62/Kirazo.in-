@@ -1181,7 +1181,7 @@ emailInput.addEventListener('input', () => {
 });
 
 // ── Form submit ───────────────────────────────────────────────────────────────
-document.getElementById('auditForm').addEventListener('submit', (e) => {
+document.getElementById('auditForm').addEventListener('submit', async (e) => {
   e.preventDefault();
   const email = emailInput.value.trim();
   if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
@@ -1189,6 +1189,27 @@ document.getElementById('auditForm').addEventListener('submit', (e) => {
     emailInput.style.borderColor = 'var(--red)';
     return;
   }
+  const btn = document.getElementById('submitBtn');
+  btn.textContent = 'Sending...';
+  btn.disabled = true;
+
+  const formData = new FormData(e.target);
+  const response = await fetch('https://api.web3forms.com/submit', {
+    method: 'POST',
+    body: formData
+  });
+  const result = await response.json();
+
+  if (result.success) {
+    document.getElementById('successEmail').textContent = email;
+    document.getElementById('auditForm').style.display = 'none';
+    document.getElementById('formSuccess').classList.add('show');
+  } else {
+    btn.textContent = 'Send My Audit Request';
+    btn.disabled = false;
+    alert('Something went wrong. Please try again.');
+  }
+});
   document.getElementById('successEmail').textContent = email;
   document.getElementById('auditForm').style.display = 'none';
   document.getElementById('formSuccess').classList.add('show');
