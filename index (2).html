@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kirazo Intelligence — Strategic Market Dominance</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800;900&family=Inter:wght@300;400;500;600&family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+:root{
+  --navy:#0F1419;--blue:#2563EB;--red:#E63946;
+  --white:#F8F9FA;--gray:#64748B;
+  --glass:rgba(255,255,255,0.07);--gb:rgba(255,255,255,0.13);
+  --shadow:0 20px 60px rgba(0,0,0,0.4);--r:16px;
+  --ease:0.4s cubic-bezier(.22,.68,0,1.2);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;background:var(--navy);color:var(--white);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+a{text-decoration:none;color:inherit}
+::-webkit-scrollbar{width:5px}
+::-webkit-scrollbar-track{background:var(--navy)}
+::-webkit-scrollbar-thumb{background:var(--blue);border-radius:3px}
+
+/* NAV */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:999;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:1.2rem 5%;
+  background:rgba(15,20,25,0.85);
+  backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
+  border-bottom:1px solid var(--gb);
+}
+.logo{font-family:'Poppins',sans-serif;font-size:1.25rem;font-weight:800}
+.logo span{color:var(--blue)}
+.nav-links{display:flex;gap:2rem;list-style:none}
+.nav-links a{font-size:.875rem;font-weight:500;color:rgba(248,249,250,.6);transition:color .2s}
+.nav-links a:hover{color:var(--white)}
+.nav-cta{background:var(--blue);color:var(--white);padding:.55rem 1.4rem;border-radius:8px;font-size:.85rem;font-weight:600;transition:background var(--ease),transform .15s}
+.nav-cta:hover{background:var(--red);transform:translateY(-2px)}
+.ham{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:.4rem}
+.ham span{display:block;width:22px;height:2px;background:var(--white);border-radius:2px}
+.mmenu{display:none;flex-direction:column;gap:1rem;position:absolute;top:100%;left:0;right:0;background:rgba(12,16,22,.98);padding:1.5rem 5%;border-bottom:1px solid var(--gb)}
+.mmenu.open{display:flex}
+.mmenu a{font-size:1rem;color:rgba(248,249,250,.7)}
+
+/* HERO */
+#hero{min-height:100vh;display:flex;align-items:center;padding:8rem 5% 5rem;position:relative;overflow:hidden}
+.hbg{position:absolute;inset:0;background:linear-gradient(135deg,#080d14 0%,#0c1530 50%,#0f1419 100%)}
+.hgrid{position:absolute;inset:0;pointer-events:none;background-image:linear-gradient(rgba(37,99,235,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(37,99,235,.06) 1px,transparent 1px);background-size:64px 64px}
+.orb{position:absolute;border-radius:50%;filter:blur(90px);pointer-events:none}
+.o1{width:500px;height:500px;background:rgba(37,99,235,.28);top:-150px;right:-100px;animation:drift 26s ease-in-out infinite}
+.o2{width:360px;height:360px;background:rgba(20,40,100,.45);bottom:-80px;left:-80px;animation:drift 20s ease-in-out infinite reverse}
+.o3{width:240px;height:240px;background:rgba(230,57,70,.12);top:45%;left:38%;animation:drift 16s ease-in-out infinite 4s}
+@keyframes drift{0%,100%{transform:translate(0,0)}33%{transform:translate(25px,-35px)}66%{transform:translate(-18px,22px)}}
+
+.hero-inner{position:relative;z-index:1;max-width:1200px;width:100%;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center}
+.hbadge{display:inline-flex;align-items:center;gap:.5rem;background:rgba(37,99,235,.15);border:1px solid rgba(37,99,235,.35);color:#93b8ff;padding:.35rem .9rem;border-radius:100px;font-size:.75rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:1.4rem}
+.bdot{width:6px;height:6px;background:var(--blue);border-radius:50%;animation:blink 2s infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
+h1{font-family:'Poppins',sans-serif;font-size:clamp(2.2rem,4vw,3.6rem);font-weight:900;line-height:1.1;letter-spacing:-.03em;margin-bottom:1.3rem}
+.blue{color:var(--blue)}
+.red-t{color:var(--red)}
+.hsub{font-size:1.05rem;line-height:1.75;color:rgba(248,249,250,.65);max-width:480px;margin-bottom:2rem}
+.hbtns{display:flex;gap:1rem;flex-wrap:wrap}
+
+.btn-main{display:inline-flex;align-items:center;gap:.5rem;background:var(--blue);color:var(--white);padding:.875rem 1.8rem;border-radius:10px;font-weight:700;font-size:.9rem;border:none;cursor:pointer;transition:all var(--ease);box-shadow:0 4px 24px rgba(37,99,235,.4)}
+.btn-main:hover{background:var(--red);transform:translateY(-3px);box-shadow:0 8px 32px rgba(230,57,70,.45)}
+.btn-outline{display:inline-flex;align-items:center;gap:.5rem;background:transparent;color:var(--white);padding:.875rem 1.8rem;border-radius:10px;font-weight:600;font-size:.9rem;border:1px solid var(--gb);cursor:pointer;transition:all var(--ease)}
+.btn-outline:hover{background:var(--glass);border-color:var(--blue);transform:translateY(-3px)}
+
+.hcard{background:var(--glass);border:1px solid var(--gb);border-radius:var(--r);padding:2rem;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);box-shadow:var(--shadow)}
+.clabel{font-family:'Courier Prime',monospace;font-size:.72rem;letter-spacing:.15em;text-transform:uppercase;color:var(--gray);margin-bottom:.4rem}
+.ctitle{font-family:'Poppins',sans-serif;font-weight:700;font-size:1rem;margin-bottom:1.5rem}
+.bchart{display:flex;gap:1.5rem;align-items:flex-end;height:150px;margin-bottom:1rem}
+.bcol{flex:1;display:flex;flex-direction:column;align-items:center;gap:.5rem}
+.btrack{width:100%;height:130px;display:flex;align-items:flex-end;position:relative}
+.bfill{width:100%;border-radius:6px 6px 0 0}
+.ba{background:linear-gradient(180deg,var(--blue),#1a3a7a);height:100%;animation:growup 1.4s .5s cubic-bezier(.22,.68,0,1.1) both}
+.bb{background:linear-gradient(180deg,var(--red),#7a0010);height:58%;position:relative;animation:growup 1.4s .7s cubic-bezier(.22,.68,0,1.1) both}
+@keyframes growup{from{transform:scaleY(0);transform-origin:bottom}to{transform:scaleY(1);transform-origin:bottom}}
+.bgap{position:absolute;top:-73%;left:0;right:0;height:72%;background:repeating-linear-gradient(45deg,rgba(230,57,70,.18) 0,rgba(230,57,70,.18) 3px,transparent 3px,transparent 9px);border:1px dashed rgba(230,57,70,.55);border-radius:4px 4px 0 0}
+.gtag{position:absolute;right:-62px;top:8px;font-family:'Courier Prime',monospace;font-size:.68rem;color:var(--red);font-weight:700;white-space:nowrap}
+.bname{font-size:.72rem;color:var(--gray);text-align:center}
+.bnum{font-family:'Courier Prime',monospace;font-size:.82rem;font-weight:700}
+.bnum.r{color:var(--red)}
+.cfoot{display:flex;justify-content:space-between;font-size:.75rem;color:var(--gray);border-top:1px solid var(--gb);padding-top:.8rem}
+.cfoot strong{color:var(--red);font-family:'Courier Prime',monospace}
+
+/* GUARANTEE */
+#guarantee{background:var(--red);padding:4.5rem 5%;text-align:center;position:relative;overflow:hidden}
+#guarantee::before,#guarantee::after{content:'';position:absolute;border-radius:50%;background:rgba(255,255,255,.06)}
+#guarantee::before{width:350px;height:350px;top:-120px;left:-80px}
+#guarantee::after{width:260px;height:260px;bottom:-80px;right:-50px}
+.gi{position:relative;z-index:1;max-width:860px;margin:0 auto}
+.cw{margin-bottom:1.2rem}
+.csv{width:60px;height:60px}
+.cbg{fill:none;stroke:rgba(255,255,255,.25);stroke-width:3}
+.cl{fill:none;stroke:#fff;stroke-width:4;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:50;stroke-dashoffset:50;transition:stroke-dashoffset 1.2s ease .2s}
+.cl.go{stroke-dashoffset:0}
+#guarantee h2{font-family:'Poppins',sans-serif;font-size:clamp(1.5rem,2.8vw,2.2rem);font-weight:900;color:#fff;line-height:1.25;margin-bottom:.7rem}
+#guarantee p{color:rgba(255,255,255,.8);font-size:.95rem}
+#guarantee p strong{color:#fff}
+
+/* SECTIONS */
+.sec{padding:6rem 5%}
+.sinner{max-width:1200px;margin:0 auto}
+.stag{font-family:'Courier Prime',monospace;font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--blue);margin-bottom:.7rem;display:block}
+.stitle{font-family:'Poppins',sans-serif;font-size:clamp(1.8rem,3vw,2.6rem);font-weight:800;letter-spacing:-.025em;margin-bottom:2.8rem}
+.stitle em{font-style:normal;color:var(--red)}
+
+/* CASE CARDS */
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem}
+.ccard{background:var(--glass);border:1px solid var(--gb);border-radius:var(--r);padding:1.8rem;backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);cursor:pointer;transition:transform var(--ease),box-shadow var(--ease),border-color var(--ease)}
+.ccard:hover{transform:translateY(-8px);box-shadow:0 20px 50px rgba(37,99,235,.25),0 0 0 1px var(--blue);border-color:var(--blue)}
+.ctag{font-size:.7rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--blue);margin-bottom:.5rem}
+.cvs{font-family:'Poppins',sans-serif;font-size:1.1rem;font-weight:800;line-height:1.3;margin-bottom:.5rem}
+.cleak{font-family:'Courier Prime',monospace;font-size:1.9rem;font-weight:700;color:var(--red);display:block;margin-bottom:.8rem}
+.cins{font-size:.85rem;line-height:1.65;color:rgba(248,249,250,.6);margin-bottom:1.1rem}
+.cmets{display:flex;flex-direction:column;gap:.4rem;margin-bottom:1.4rem}
+.cm{display:flex;align-items:center;gap:.5rem;font-size:.78rem;color:rgba(248,249,250,.5)}
+.cdot{width:5px;height:5px;background:var(--blue);border-radius:50%;flex-shrink:0}
+.cbtn{background:var(--navy);color:var(--white);border:1px solid var(--blue);padding:.55rem 1.2rem;border-radius:8px;font-size:.8rem;font-weight:600;cursor:pointer;transition:all var(--ease)}
+.cbtn:hover{background:var(--red);border-color:var(--red)}
+
+/* PRICING */
+#pricing{background:linear-gradient(180deg,transparent,rgba(10,15,40,.6) 100%)}
+.ptog{display:flex;align-items:center;justify-content:center;gap:1rem;margin-bottom:3rem}
+.ptl{font-size:.88rem;font-weight:500;color:var(--gray);transition:color .2s}
+.ptl.on{color:var(--white)}
+.psw{width:50px;height:26px;background:var(--glass);border:1px solid var(--gb);border-radius:13px;position:relative;cursor:pointer;transition:background .3s}
+.psw.ann{background:var(--blue);border-color:var(--blue)}
+.pk{position:absolute;top:3px;left:3px;width:20px;height:20px;background:#fff;border-radius:50%;transition:transform .35s cubic-bezier(.22,.68,0,1.2)}
+.psw.ann .pk{transform:translateX(24px)}
+.psave{font-size:.7rem;font-weight:800;letter-spacing:.08em;color:var(--red);text-transform:uppercase;opacity:0;transition:opacity .3s}
+.psave.show{opacity:1}
+.pgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem;align-items:start}
+.pcard{background:var(--glass);border:1px solid var(--gb);border-radius:var(--r);padding:2rem;backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);transition:transform var(--ease),box-shadow var(--ease)}
+.pcard:hover{transform:translateY(-6px);box-shadow:var(--shadow)}
+.pcard.pop{border:2px solid var(--red);background:rgba(230,57,70,.04);position:relative}
+.pbadge{position:absolute;top:-13px;left:50%;transform:translateX(-50%);background:var(--red);color:#fff;font-size:.68rem;font-weight:800;letter-spacing:.15em;text-transform:uppercase;padding:.28rem .9rem;border-radius:100px;white-space:nowrap}
+.ptier{font-family:'Courier Prime',monospace;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--blue);margin-bottom:.4rem}
+.pname{font-family:'Poppins',sans-serif;font-size:1.05rem;font-weight:800;line-height:1.3;margin-bottom:.6rem}
+.pp{display:flex;align-items:baseline;gap:.2rem;margin-bottom:.4rem}
+.pc{font-size:1.1rem;font-weight:600;color:var(--gray)}
+.pn{font-family:'Poppins',sans-serif;font-size:2.6rem;font-weight:900;line-height:1}
+.pper{font-size:.82rem;color:var(--gray)}
+.pdays{font-size:.8rem;color:var(--gray);margin-bottom:1.3rem;padding-bottom:1.3rem;border-bottom:1px solid var(--gb)}
+.pdays strong{color:var(--white)}
+.pfl{list-style:none;display:flex;flex-direction:column;gap:.65rem;margin-bottom:1.8rem}
+.pfl li{display:flex;align-items:flex-start;gap:.55rem;font-size:.85rem;color:rgba(248,249,250,.72)}
+.pck{width:15px;height:15px;flex-shrink:0;margin-top:2px;color:var(--blue)}
+.pcard.pop .pck{color:var(--red)}
+.btn-r{display:block;width:100%;text-align:center;background:var(--red);color:#fff;padding:.875rem;border-radius:10px;font-weight:700;font-size:.92rem;border:none;cursor:pointer;transition:all var(--ease);box-shadow:0 4px 20px rgba(230,57,70,.35)}
+.btn-r:hover{background:#c1121f;transform:translateY(-2px)}
+.btn-n{display:block;width:100%;text-align:center;background:var(--navy);color:#fff;padding:.875rem;border-radius:10px;font-weight:700;font-size:.92rem;border:1px solid var(--blue);cursor:pointer;transition:all var(--ease)}
+.btn-n:hover{background:var(--blue);transform:translateY(-2px)}
+
+/* CONTACT */
+#contact{position:relative}
+#contact::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--blue),transparent)}
+.cwrap{max-width:580px;margin:0 auto;text-align:center}
+.fcard{background:var(--glass);border:1px solid var(--gb);border-radius:var(--r);padding:2.5rem;text-align:left;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
+.frow{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.fg{display:flex;flex-direction:column;gap:.4rem;margin-bottom:.9rem}
+.fg label{font-size:.75rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:rgba(248,249,250,.45)}
+.fg input,.fg select,.fg textarea{background:rgba(255,255,255,.05);border:1px solid var(--gb);color:var(--white);font-family:'Inter',sans-serif;font-size:.88rem;padding:.72rem 1rem;border-radius:8px;outline:none;width:100%;transition:border-color .2s,box-shadow .2s;-webkit-appearance:none}
+.fg input::placeholder,.fg textarea::placeholder{color:rgba(248,249,250,.25)}
+.fg select option{background:#111827;color:var(--white)}
+.fg input:focus,.fg select:focus,.fg textarea:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(37,99,235,.18)}
+.fg textarea{resize:vertical;min-height:100px}
+.ewrap{position:relative}
+.ewrap input{padding-right:2.4rem}
+.est{position:absolute;right:.75rem;top:50%;transform:translateY(-50%);font-size:.9rem}
+.bsub{width:100%;background:var(--red);color:#fff;border:none;padding:1rem;border-radius:10px;font-family:'Poppins',sans-serif;font-size:.95rem;font-weight:700;cursor:pointer;transition:all var(--ease);margin-top:.3rem;box-shadow:0 4px 20px rgba(230,57,70,.35);display:flex;align-items:center;justify-content:center;gap:.5rem}
+.bsub:hover{background:#c1121f;transform:translateY(-2px)}
+.bsub:disabled{opacity:.6;cursor:not-allowed;transform:none}
+.fok{display:none;text-align:center;padding:3rem 1rem}
+.fok.show{display:block}
+.fok .icon{font-size:3rem;margin-bottom:1rem}
+.fok h3{font-family:'Poppins',sans-serif;font-size:1.4rem;font-weight:800;margin-bottom:.5rem}
+.fok p{color:rgba(248,249,250,.6);font-size:.9rem}
+
+/* FOOTER */
+footer{background:#07090d;border-top:1px solid var(--gb);padding:3.5rem 5% 2rem}
+.fgrid{display:grid;grid-template-columns:1.6fr 1fr 1fr;gap:3rem;max-width:1200px;margin:0 auto 2.5rem}
+.flo{font-family:'Poppins',sans-serif;font-size:1.15rem;font-weight:800;margin-bottom:.7rem}
+.flo span{color:var(--blue)}
+.fd{font-size:.83rem;color:var(--gray);line-height:1.6;margin-bottom:1.1rem}
+.fsc{display:flex;gap:.7rem}
+.fs{width:36px;height:36px;background:var(--glass);border:1px solid var(--gb);border-radius:8px;display:flex;align-items:center;justify-content:center;color:var(--gray);font-size:.85rem;transition:all .2s}
+.fs:hover{background:var(--blue);border-color:var(--blue);color:#fff}
+.fcol h4{font-family:'Poppins',sans-serif;font-size:.8rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:.9rem}
+.fcol ul{list-style:none;display:flex;flex-direction:column;gap:.5rem}
+.fcol ul a{font-size:.85rem;color:var(--gray);transition:color .2s}
+.fcol ul a:hover{color:var(--white)}
+.fbot{max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;padding-top:1.4rem;border-top:1px solid var(--gb);font-size:.78rem;color:var(--gray)}
+
+/* MODAL */
+.ov{position:fixed;inset:0;z-index:2000;background:rgba(5,8,14,.88);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center;padding:2rem;visibility:hidden;opacity:0;transition:opacity .3s,visibility .3s}
+.ov.open{visibility:visible;opacity:1}
+.modal{background:#121920;border:1px solid var(--gb);border-radius:var(--r);padding:2.5rem;max-width:540px;width:100%;transform:translateY(24px) scale(.97);transition:transform .38s cubic-bezier(.22,.68,0,1.2)}
+.ov.open .modal{transform:translateY(0) scale(1)}
+.mt{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:1.2rem}
+.mc{background:none;border:none;color:var(--gray);font-size:1.2rem;cursor:pointer;padding:.2rem;transition:color .2s}
+.mc:hover{color:var(--white)}
+.ml{font-family:'Courier Prime',monospace;font-size:2rem;font-weight:700;color:var(--red);margin-bottom:.8rem}
+.mb{font-size:.88rem;line-height:1.7;color:rgba(248,249,250,.65);margin-bottom:1.4rem}
+.mm{display:grid;grid-template-columns:1fr 1fr;gap:.8rem;margin-bottom:1.5rem}
+.mmi{background:var(--glass);border:1px solid var(--gb);border-radius:8px;padding:.75rem}
+.mmv{font-family:'Courier Prime',monospace;font-size:1.1rem;font-weight:700;color:var(--blue)}
+.mml{font-size:.72rem;color:var(--gray);margin-top:.2rem}
+
+/* RESPONSIVE */
+@media(max-width:1024px){
+  .hero-inner{grid-template-columns:1fr;gap:3rem}
+  .hcard{order:-1}
+  .cards,.pgrid{grid-template-columns:1fr;max-width:460px}
+  .frow{grid-template-columns:1fr}
+}
+@media(max-width:768px){
+  .nav-links,.nav-cta{display:none}
+  .ham{display:flex}
+  .fgrid{grid-template-columns:1fr}
+  .fbot{flex-direction:column;gap:.4rem;text-align:center}
+  .mm{grid-template-columns:1fr}
+  #hero{padding:7rem 5% 4rem}
+}
+@keyframes spin{to{transform:rotate(360deg)}}
+.spin{animation:spin .8s linear infinite}
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <a href="#" class="logo">Kirazo<span>.</span></a>
+  <ul class="nav-links">
+    <li><a href="#cases">Case Studies</a></li>
+    <li><a href="#pricing">Pricing</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="#contact" class="nav-cta">Get Free Audit</a>
+  <button class="ham" id="ham"><span></span><span></span><span></span></button>
+  <div class="mmenu" id="mmenu">
+    <a href="#cases">Case Studies</a>
+    <a href="#pricing">Pricing</a>
+    <a href="#contact">Contact</a>
+    <a href="#contact" class="nav-cta" style="width:fit-content">Get Free Audit</a>
+  </div>
+</nav>
+
+<section id="hero">
+  <div class="hbg"></div>
+  <div class="hgrid"></div>
+  <div class="orb o1"></div>
+  <div class="orb o2"></div>
+  <div class="orb o3"></div>
+  <div class="hero-inner">
+    <div>
+      <div class="hbadge"><span class="bdot"></span>Trusted by Series A/B Founders</div>
+      <h1>Stop Losing Revenue<br>to <span class="blue">Your</span><br><span class="red-t">Competitors.</span></h1>
+      <p class="hsub">Kirazo Intelligence identifies the "Million-Dollar Gaps" in your market strategy and gives you the tactical roadmap to capture them — before your competitors do.</p>
+      <div class="hbtns">
+        <a href="#contact" class="btn-main"><i class="fa-solid fa-magnifying-glass-dollar"></i> Get Your Free Revenue Audit</a>
+        <a href="#cases" class="btn-outline"><i class="fa-solid fa-arrow-right"></i> View Case Studies</a>
+      </div>
+    </div>
+    <div class="hcard">
+      <div class="clabel">Revenue Intelligence™ Dashboard</div>
+      <div class="ctitle">Your Revenue Leakage Report</div>
+      <div class="bchart">
+        <div class="bcol">
+          <div class="btrack"><div class="bfill ba"></div></div>
+          <div class="bname">Your Potential</div>
+          <div class="bnum">$1.2M</div>
+        </div>
+        <div class="bcol">
+          <div class="btrack">
+            <div class="bfill bb">
+              <div class="bgap"><span class="gtag">↑ $648K Gap</span></div>
+            </div>
+          </div>
+          <div class="bname">Current ARR</div>
+          <div class="bnum r">$552K</div>
+        </div>
+      </div>
+      <div class="cfoot"><span>Based on competitor benchmarking</span><span>Leakage: <strong>$648,000/yr</strong></span></div>
+    </div>
+  </div>
+</section>
+
+<section id="guarantee">
+  <div class="gi">
+    <div class="cw">
+      <svg class="csv" viewBox="0 0 64 64">
+        <circle class="cbg" cx="32" cy="32" r="28"/>
+        <polyline class="cl" id="cl" points="18,32 27,42 46,22"/>
+      </svg>
+    </div>
+    <h2>If we don't identify at least $50,000 in annualized "Revenue Leakage," you don't pay. Period.</h2>
+    <p>Our <strong>$50K Million-Dollar Gap Guarantee</strong> means zero risk for you — pure upside only.</p>
+  </div>
+</section>
+
+<section class="sec" id="cases">
+  <div class="sinner">
+    <span class="stag">Client Intelligence Reports</span>
+    <h2 class="stitle">Real Gaps. <em>Real Revenue.</em></h2>
+    <div class="cards">
+      <article class="ccard" tabindex="0" data-m="m1">
+        <div class="ctag">Search AI · SaaS</div>
+        <div class="cvs">You.com vs. Perplexity AI</div>
+        <span class="cleak">$648,000/yr</span>
+        <p class="cins">Missing 3 key referral partnership channels that Perplexity dominates. Backlink gap translates to a 38% organic traffic shortfall worth $648K annually.</p>
+        <div class="cmets"><div class="cm"><span class="cdot"></span>3 Missing Referral Sources</div><div class="cm"><span class="cdot"></span>80% Traffic Gap vs Competitor</div><div class="cm"><span class="cdot"></span>6-Month Recovery Plan</div></div>
+        <button class="cbtn">View Full Brief →</button>
+      </article>
+      <article class="ccard" tabindex="0" data-m="m2">
+        <div class="ctag">Productivity · PLG</div>
+        <div class="cvs">Notion vs. Coda.io</div>
+        <span class="cleak">$1,200,000/yr</span>
+        <p class="cins">Coda's enterprise page converts 2.4× better using intent-driven copy. Notion's enterprise segment leaks $1.2M due to misaligned messaging and a broken funnel step.</p>
+        <div class="cmets"><div class="cm"><span class="cdot"></span>2.4× Conversion Rate Gap</div><div class="cm"><span class="cdot"></span>Enterprise Funnel Broken</div><div class="cm"><span class="cdot"></span>4-Month Fix Roadmap</div></div>
+        <button class="cbtn">View Full Brief →</button>
+      </article>
+      <article class="ccard" tabindex="0" data-m="m3">
+        <div class="ctag">Video · B2B SaaS</div>
+        <div class="cvs">Loom vs. Vidyard</div>
+        <span class="cleak">$870,000/yr</span>
+        <p class="cins">Vidyard captures the sales enablement niche with 6 integrations Loom lacks. Each uncaptured integration = $145K in average ARR per enterprise account.</p>
+        <div class="cmets"><div class="cm"><span class="cdot"></span>6 Missing CRM Integrations</div><div class="cm"><span class="cdot"></span>$145K/Account Opportunity</div><div class="cm"><span class="cdot"></span>Partnership Playbook Included</div></div>
+        <button class="cbtn">View Full Brief →</button>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="pricing">
+  <div class="sinner">
+    <span class="stag" style="text-align:center">Intelligence Packages</span>
+    <h2 class="stitle" style="text-align:center">Invest in <em>Dominance</em></h2>
+    <div class="ptog">
+      <span class="ptl on" id="ml">Monthly</span>
+      <div class="psw" id="pt" role="switch" aria-checked="false" tabindex="0"><div class="pk"></div></div>
+      <span class="ptl" id="al">Annual</span>
+      <span class="psave" id="ps">SAVE 20%</span>
+    </div>
+    <div class="pgrid">
+      <div class="pcard">
+        <div class="ptier">Tier 01</div>
+        <div class="pname">Revenue Leakage Snapshot</div>
+        <div class="pp"><span class="pc">$</span><span class="pn" data-m="997" data-a="797">997</span></div>
+        <div class="pdays">Delivered in <strong>3 Business Days</strong></div>
+        <ul class="pfl">
+          <li><svg class="pck" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Direct Competitor Benchmarking</li>
+          <li><svg class="pck" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Top 3 Revenue Gap Analysis</li>
+          <li><svg class="pck" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Financial Impact Estimate</li>
+          <li><svg class="pck" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Executive PDF Report</li>
+        </ul>
+        <a href="#contact" class="btn-n">Get Started →</a>
+      </div>
+      <div class="pcard pop">
+        <div class="pbadge">★ Most Popular</div>
+        <div class="ptier">Tier 02</div>
+        <div class="pname">Strategic Market Dominance Brief</div>
+        <div class="pp"><span class="pc">$</span><span class="pn" data-m="2500" data-a="2000">2,500</span></div>
+        <div class="pdays">Delivered in <strong>7 Business Days</strong></div>
+        <ul class="pfl">
+          <li><svg class="pck" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Full Market Benchmarking (5+ Rivals)</li>
+          <li><svg class="pck" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Buyer Intent Gap Mapping</li>
+          <li><svg class="pck" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Backdoor Partnership Plan</li>
+          <li><svg class="pck" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>6-Month Tactical Roadmap</li>
+          <li><svg class="pck" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>30-Min Strategy Call Included</li>
+        </ul>
+        <a href="#contact" class="btn-r">Choose This Plan →</a>
+      </div>
+      <div class="pcard">
+        <div class="ptier">Tier 03</div>
+        <div class="pname">Trillion-Dollar Retainer</div>
+        <div class="pp"><span class="pc">$</span><span class="pn" data-m="5000" data-a="4000">5,000</span><span class="pper">/mo</span></div>
+        <div class="pdays"><strong>Ongoing</strong> · Real-Time Coverage</div>
+        <ul class="pfl">
+          <li><svg class="pck" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Everything in Tier 2</li>
+          <li><svg class="pck" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Monthly Competitive Updates</li>
+          <li><svg class="pck" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Real-Time Market Alerts</li>
+          <li><svg class="pck" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Bi-Weekly Strategy Calls</li>
+          <li><svg class="pck" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Dedicated Intelligence Analyst</li>
+        </ul>
+        <a href="#contact" class="btn-n">Schedule Consultation →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="contact">
+  <div class="cwrap">
+    <span class="stag" style="text-align:center">Let's Begin</span>
+    <h2 class="stitle" style="text-align:center;margin-bottom:1.8rem">Request Your <em>Free</em><br>Revenue Audit</h2>
+    <div class="fcard">
+      <form id="af">
+        <input type="hidden" name="access_key" value="354d91bb-208f-44ef-a07a-d283ad93af63">
+        <input type="hidden" name="subject" value="New Revenue Audit Request — Kirazo Intelligence">
+        <input type="hidden" name="from_name" value="Kirazo Intelligence Website">
+        <div class="frow">
+          <div class="fg"><label>Company Name</label><input type="text" name="company" placeholder="e.g., Perplexity AI"></div>
+          <div class="fg"><label>Your Name</label><input type="text" name="name" placeholder="Your Full Name"></div>
+        </div>
+        <div class="fg">
+          <label>Email Address *</label>
+          <div class="ewrap"><input type="email" id="em" name="email" placeholder="your@company.com" required><span class="est" id="es"></span></div>
+        </div>
+        <div class="frow">
+          <div class="fg"><label>Your Role</label><select name="role"><option value="" disabled selected>Select role</option><option>CEO</option><option>Founder</option><option>Marketing Director</option><option>Other</option></select></div>
+          <div class="fg"><label>Main Competitor</label><input type="text" name="competitor" placeholder="Biggest rival?"></div>
+        </div>
+        <div class="fg"><label>Market Challenge</label><textarea name="message" placeholder="Tell us what's keeping you up at night…"></textarea></div>
+        <button type="submit" class="bsub" id="sb"><i class="fa-solid fa-rocket"></i> Send My Audit Request</button>
+      </form>
+      <div class="fok" id="fok"><div class="icon">🎯</div><h3>Audit Request Received!</h3><p>We'll be in touch within 24 hours at <strong id="sem"></strong></p></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="fgrid">
+    <div>
+      <div class="flo">Kirazo<span>.</span>Intelligence</div>
+      <p class="fd">We find the million-dollar gaps your competitors are exploiting — and give you the roadmap to close them.</p>
+      <div class="fsc">
+        <a href="#" class="fs"><i class="fab fa-linkedin-in"></i></a>
+        <a href="#" class="fs"><i class="fab fa-x-twitter"></i></a>
+        <a href="mailto:intelligence@kirazo.in" class="fs"><i class="fas fa-envelope"></i></a>
+      </div>
+    </div>
+    <div class="fcol">
+      <h4>Services</h4>
+      <ul><li><a href="#pricing">Revenue Snapshot</a></li><li><a href="#pricing">Market Dominance Brief</a></li><li><a href="#pricing">Trillion-Dollar Retainer</a></li><li><a href="#contact">Free Audit</a></li></ul>
+    </div>
+    <div class="fcol">
+      <h4>Contact</h4>
+      <ul><li><a href="mailto:intelligence@kirazo.in">intelligence@kirazo.in</a></li><li><a href="#">kirazo.in</a></li><li><a href="#contact">Book a Call</a></li></ul>
+    </div>
+  </div>
+  <div class="fbot"><span>© 2026 Kirazo Intelligence. All rights reserved.</span><span>Strategic Market Intelligence · kirazo.in</span></div>
+</footer>
+
+<!-- MODALS -->
+<div class="ov" id="m1"><div class="modal"><div class="mt"><div><div class="ctag">Search AI · SaaS</div><div class="cvs" style="font-family:'Poppins',sans-serif;font-size:1.2rem;font-weight:800">You.com vs. Perplexity AI</div></div><button class="mc">✕</button></div><div class="ml">$648,000 / year</div><p class="mb">Our analysis identified that Perplexity AI dominates 3 referral partnership channels entirely absent from You.com's growth stack. These channels drive 38% of Perplexity's organic user acquisition at near-zero CAC. Closing this gap through strategic backdoor partnerships could recover $648K in annualized ARR within 6 months.</p><div class="mm"><div class="mmi"><div class="mmv">3</div><div class="mml">Missing Referral Channels</div></div><div class="mmi"><div class="mmv">80%</div><div class="mml">Organic Traffic Gap</div></div><div class="mmi"><div class="mmv">38%</div><div class="mml">Acquisition Shortfall</div></div><div class="mmi"><div class="mmv">6 Mo</div><div class="mml">Recovery Timeline</div></div></div><a href="#contact" class="btn-r" style="text-decoration:none">Get a Brief Like This →</a></div></div>
+<div class="ov" id="m2"><div class="modal"><div class="mt"><div><div class="ctag">Productivity · PLG</div><div class="cvs" style="font-family:'Poppins',sans-serif;font-size:1.2rem;font-weight:800">Notion vs. Coda.io</div></div><button class="mc">✕</button></div><div class="ml">$1,200,000 / year</div><p class="mb">Coda's enterprise landing page converts at 2.4× Notion's rate due to sharply intent-mapped copy and a streamlined demo-request flow. Notion's enterprise segment loses $1.2M annually to a three-step funnel break our audit identified with a 4-month repair roadmap.</p><div class="mm"><div class="mmi"><div class="mmv">2.4×</div><div class="mml">Conversion Gap</div></div><div class="mmi"><div class="mmv">3</div><div class="mml">Broken Funnel Steps</div></div><div class="mmi"><div class="mmv">$1.2M</div><div class="mml">Annual Leakage</div></div><div class="mmi"><div class="mmv">4 Mo</div><div class="mml">Fix Roadmap</div></div></div><a href="#contact" class="btn-r" style="text-decoration:none">Get a Brief Like This →</a></div></div>
+<div class="ov" id="m3"><div class="modal"><div class="mt"><div><div class="ctag">Video · B2B SaaS</div><div class="cvs" style="font-family:'Poppins',sans-serif;font-size:1.2rem;font-weight:800">Loom vs. Vidyard</div></div><button class="mc">✕</button></div><div class="ml">$870,000 / year</div><p class="mb">Vidyard captures the entire sales-enablement niche with 6 native CRM integrations that Loom entirely lacks. Each integration unlocks $145K in average enterprise ARR. Our partnership playbook maps the exact integration partners, outreach sequence, and timeline to close this gap permanently.</p><div class="mm"><div class="mmi"><div class="mmv">6</div><div class="mml">Missing Integrations</div></div><div class="mmi"><div class="mmv">$145K</div><div class="mml">ARR Per Integration</div></div><div class="mmi"><div class="mmv">$870K</div><div class="mml">Total Leakage</div></div><div class="mmi"><div class="mmv">Full</div><div class="mml">Partnership Playbook</div></div></div><a href="#contact" class="btn-r" style="text-decoration:none">Get a Brief Like This →</a></div></div>
+
+<script>
+// Nav scroll
+window.addEventListener('scroll',()=>document.getElementById('nav').classList.toggle('scrolled',scrollY>40),{passive:true});
+
+// Hamburger
+document.getElementById('ham').addEventListener('click',()=>document.getElementById('mmenu').classList.toggle('open'));
+
+// Smooth scroll
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click',e=>{
+    const t=document.querySelector(a.getAttribute('href'));
+    if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth'});document.getElementById('mmenu').classList.remove('open')}
+  });
+});
+
+// Guarantee checkmark
+const gIO=new IntersectionObserver(en=>{
+  if(en[0].isIntersecting){document.getElementById('cl').classList.add('go');gIO.disconnect()}
+},{threshold:0.3});
+gIO.observe(document.getElementById('guarantee'));
+
+// Pricing toggle
+let ann=false;
+const pt=document.getElementById('pt');
+pt.addEventListener('click',()=>{
+  ann=!ann;
+  pt.classList.toggle('ann',ann);
+  pt.setAttribute('aria-checked',ann);
+  document.getElementById('ml').classList.toggle('on',!ann);
+  document.getElementById('al').classList.toggle('on',ann);
+  document.getElementById('ps').classList.toggle('show',ann);
+  document.querySelectorAll('.pn').forEach(el=>el.textContent=Number(ann?el.dataset.a:el.dataset.m).toLocaleString());
+});
+pt.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();pt.click()}});
+
+// Email validation
+const em=document.getElementById('em'),es=document.getElementById('es');
+em.addEventListener('input',()=>{
+  const v=em.value.trim();
+  if(!v){es.textContent='';em.style.borderColor='';return}
+  const ok=/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
+  es.textContent=ok?'✅':'❌';
+  em.style.borderColor=ok?'var(--blue)':'var(--red)';
+});
+
+// Form submit
+const sb=document.getElementById('sb');
+document.getElementById('af').addEventListener('submit',async e=>{
+  e.preventDefault();
+  const v=em.value.trim();
+  if(!v||!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)){em.focus();em.style.borderColor='var(--red)';return}
+  sb.disabled=true;
+  sb.innerHTML='<i class="fa-solid fa-circle-notch spin"></i> Sending…';
+  try{
+    const r=await fetch('https://api.web3forms.com/submit',{method:'POST',body:new FormData(document.getElementById('af'))});
+    const d=await r.json();
+    if(d.success){
+      document.getElementById('sem').textContent=v;
+      document.getElementById('af').style.display='none';
+      document.getElementById('fok').classList.add('show');
+    } else throw new Error(d.message);
+  } catch(err){
+    sb.disabled=false;
+    sb.innerHTML='<i class="fa-solid fa-triangle-exclamation"></i> Something went wrong — try again';
+  }
+});
+
+// Modals
+function openM(id){document.getElementById(id).classList.add('open');document.body.style.overflow='hidden'}
+function closeM(el){el.classList.remove('open');document.body.style.overflow=''}
+document.querySelectorAll('.ccard').forEach(c=>{
+  c.addEventListener('click',()=>openM(c.dataset.m));
+  c.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();openM(c.dataset.m)}});
+});
+document.querySelectorAll('.ov').forEach(o=>{
+  o.addEventListener('click',e=>{if(e.target===o)closeM(o)});
+  o.querySelector('.mc').addEventListener('click',()=>closeM(o));
+});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')document.querySelectorAll('.ov.open').forEach(closeM)});
+document.querySelectorAll('.ov .btn-r[href="#contact"]').forEach(b=>b.addEventListener('click',()=>document.querySelectorAll('.ov.open').forEach(closeM)));
+</script>
+</body>
+</html>
